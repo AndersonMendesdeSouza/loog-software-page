@@ -263,6 +263,7 @@ function ProjectCarousel({ id, title, projects, onOpenProject }: ProjectCarousel
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showScrollHint, setShowScrollHint] = useState(true)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const projectDialog = useRef<HTMLDialogElement>(null)
 
@@ -297,6 +298,19 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const hideScrollHint = () => {
+      if (window.scrollY > 24) {
+        setShowScrollHint(false)
+      }
+    }
+
+    hideScrollHint()
+    window.addEventListener('scroll', hideScrollHint, { passive: true })
+
+    return () => window.removeEventListener('scroll', hideScrollHint)
+  }, [])
+
   function openProject(project: Project) {
     setSelectedProject(project)
     projectDialog.current?.showModal()
@@ -321,6 +335,15 @@ function App() {
           </button>
         </div>
       </header>
+
+      {showScrollHint && !menuOpen && (
+        <div className="scroll-hint" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"
+            strokeLinecap="round" strokeLinejoin="round">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </div>
+      )}
 
       <main id="conteudo">
         <section className="hero" id="inicio">

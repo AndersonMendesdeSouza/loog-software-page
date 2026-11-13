@@ -83,6 +83,37 @@
   display: none;
 }
 
+.scroll-hint {
+  position: fixed;
+  left: 50%;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 8;
+  transform: translateX(-50%);
+  color: #70b7ff;
+  pointer-events: none;
+  animation: scroll-hint-move 1.4s ease-in-out infinite;
+}
+
+.scroll-hint svg {
+  width: 26px;
+  height: 26px;
+}
+
+body:has(dialog[open]) .scroll-hint {
+  display: none;
+}
+
+@keyframes scroll-hint-move {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    opacity: .45;
+  }
+  50% {
+    transform: translate(-50%, 8px);
+    opacity: 1;
+  }
+}
+
 .hero {
   position: relative;
   overflow: hidden;
