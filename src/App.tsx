@@ -1,5 +1,12 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
+import andersonPortrait from './assets/anderson/Retrato Masculino Recortado em Fundo Transparente.png'
+import imobiliariaPreview from './assets/imobiliaria/image.png'
+import construtoraPreview from './construtora/image.png'
+import joiasPreview from './assets/joias/image.png'
+import oticaPreview from './assets/otica/image.png'
+import odontoPreview from './assets/odonto/image.png'
+import essenciaPreview from './assets/essencia/image.png'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/loog_software/'
@@ -42,36 +49,6 @@ function Brand() {
   )
 }
 
-function DashboardPreview() {
-  return (
-    <div className="dashboard-preview" aria-hidden="true">
-      <aside className="dashboard-sidebar"><BrandMark /><i /><i /><i /><i /><span /></aside>
-      <div className="dashboard-content">
-        <div className="dashboard-top">
-          <span>Visão geral <small>Seu negócio, em um só lugar.</small></span>
-          <span className="dashboard-avatar">L</span>
-        </div>
-        <div className="dashboard-metrics">
-          <div><small>Receita mensal</small><strong>R$ 24.580 <span>↗ 18,6%</span></strong><i /></div>
-          <div><small>Novos pedidos</small><strong>148 <span>↗ 12,4%</span></strong><i /></div>
-        </div>
-        <div className="dashboard-chart">
-          <div><strong>Seu crescimento</strong><span>Este mês ⌄</span></div>
-          <div className="chart-area">
-            <span>30k<br />20k<br />10k<br />0</span>
-            <svg viewBox="0 0 400 145" preserveAspectRatio="none">
-              <path d="M0 125 35 109 65 115 100 76 130 86 165 58 195 73 230 35 260 51 295 20 325 34 360 8 400 18V145H0Z" fill="#1683ff" fillOpacity=".1" />
-              <path d="m0 125 35-16 30 6 35-39 30 10 35-28 30 15 35-38 30 16 35-31 30 14 35-26 40 10" stroke="#2995ff" strokeWidth="3" fill="none" />
-            </svg>
-          </div>
-          <div className="chart-months"><span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span></div>
-        </div>
-        <div className="dashboard-bottom"><span><i /> Tudo em dia. Tudo sob controle.</span><span>Ver relatório ↗</span></div>
-      </div>
-    </div>
-  )
-}
-
 type Project = {
   id: string
   category: string
@@ -84,6 +61,26 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    id: 'imobiliaria',
+    category: 'SITE IMOBILIÁRIO',
+    title: 'Imobiliária',
+    image: imobiliariaPreview,
+    imageAlt: 'Site imobiliário de Buriti Alegre apresentado em um notebook e um celular.',
+    url: 'https://imobiliaria-im.vercel.app/',
+    description: 'Um site para apresentar imóveis em Buriti Alegre (GO) e facilitar o contato com o corretor.',
+    tags: ['Catálogo de imóveis', 'Contato com corretor'],
+  },
+  {
+    id: 'construtora',
+    category: 'SITE INSTITUCIONAL',
+    title: 'Construtora',
+    image: construtoraPreview,
+    imageAlt: 'Site da Construtora apresentado em um notebook e um celular, com projetos e obras em destaque.',
+    url: 'https://construtora-projeto.vercel.app/',
+    description: 'Um site institucional para apresentar projetos, obras e serviços de construção, com contato para solicitar orçamento.',
+    tags: ['Projetos e obras', 'Solicitação de orçamento'],
+  },
   {
     id: 'anas-intimafit',
     category: 'CATÁLOGO DIGITAL',
@@ -104,6 +101,64 @@ const projects: Project[] = [
     description: 'Um cardápio digital que apresenta pratos e bebidas, com busca, categorias e produtos em destaque.',
     tags: ['Cardápio online', 'Experiência mobile'],
   },
+  {
+    id: 'vitrine-joias',
+    category: 'CATÁLOGO DIGITAL',
+    title: 'Vitrine Joias',
+    image: joiasPreview,
+    imageAlt: 'Site da Vitrine Joias apresentado em um notebook e um celular, com coleções de joias em destaque.',
+    url: 'https://vitrine-joias-page.vercel.app/',
+    description: 'Uma vitrine digital de demonstração para apresentar coleções de joias, explorar categorias e selecionar peças favoritas.',
+    tags: ['Catálogo de joias', 'Filtros por categoria'],
+  },
+  {
+    id: 'otica-visao',
+    category: 'CATÁLOGO DIGITAL',
+    title: 'Ótica Visão',
+    image: oticaPreview,
+    imageAlt: 'Site da Ótica Visão apresentado em um notebook e um celular, com coleções de óculos em destaque.',
+    url: 'https://otica-page.vercel.app/',
+    description: 'Um site para apresentar coleções de óculos, detalhar modelos e facilitar o contato com a Ótica Visão em Buriti Alegre (GO).',
+    tags: ['Catálogo de óculos', 'Contato com a loja'],
+  },
+  {
+    id: 'lucas-silva-odonto',
+    category: 'SITE PROFISSIONAL',
+    title: 'Lucas Silva — Odontologia',
+    image: odontoPreview,
+    imageAlt: 'Site de Lucas Silva, Odontologia e Estética, apresentado em um notebook e um celular.',
+    url: 'https://lucas-odonto.vercel.app/',
+    description: 'Um site para apresentar Lucas Silva, seus serviços de odontologia e estética e facilitar o contato para avaliações em Uberlândia (MG).',
+    tags: ['Odontologia e estética', 'Apresentação profissional'],
+  },
+  {
+    id: 'essencia-estetica',
+    category: 'SITE PROFISSIONAL',
+    title: 'Essência Estética',
+    image: essenciaPreview,
+    imageAlt: 'Site da Essência Estética apresentado em um notebook e um celular, com serviços de estética e bem-estar.',
+    url: 'https://essencia-estetica-page.vercel.app/',
+    description: 'Um site para apresentar a Essência Estética, organizar seus procedimentos e compartilhar informações sobre estética e bem-estar.',
+    tags: ['Estética e bem-estar', 'Apresentação de serviços'],
+  },
+]
+
+const projectGroups = [
+  {
+    id: 'sites-profissionais',
+    title: 'Sites profissionais',
+    categories: ['SITE IMOBILIÁRIO', 'SITE INSTITUCIONAL', 'SITE PROFISSIONAL'],
+  },
+  {
+    id: 'catalogos-digitais',
+    title: 'Catálogos digitais',
+    categories: ['CATÁLOGO DIGITAL'],
+  },
+  {
+    id: 'cardapios-digitais',
+    title: 'Cardápios digitais',
+    categories: ['CARDÁPIO DIGITAL'],
+  },
 ]
 
 const steps = [
@@ -112,10 +167,135 @@ const steps = [
   { number: '03', title: 'Seu projeto no mundo', text: 'Revisamos os detalhes e preparamos tudo para sua solução começar a fazer parte do dia a dia.' },
 ]
 
+type ProjectCarouselProps = {
+  id: string
+  title: string
+  projects: Project[]
+  onOpenProject: (project: Project) => void
+}
+
+function ProjectCarousel({ id, title, projects, onOpenProject }: ProjectCarouselProps) {
+  const trackRef = useRef<HTMLDivElement>(null)
+  const [canScrollBack, setCanScrollBack] = useState(false)
+  const [canScrollForward, setCanScrollForward] = useState(false)
+  const hasOverflow = canScrollBack || canScrollForward
+  const trackId = id + '-track'
+
+  useEffect(() => {
+    const track = trackRef.current
+
+    if (!track) {
+      return
+    }
+
+    const updateScrollButtons = () => {
+      setCanScrollBack(track.scrollLeft > 1)
+      setCanScrollForward(track.scrollLeft + track.clientWidth < track.scrollWidth - 1)
+    }
+
+    updateScrollButtons()
+    track.addEventListener('scroll', updateScrollButtons, { passive: true })
+    window.addEventListener('resize', updateScrollButtons)
+
+    return () => {
+      track.removeEventListener('scroll', updateScrollButtons)
+      window.removeEventListener('resize', updateScrollButtons)
+    }
+  }, [projects.length])
+
+  function scrollProjects(direction: 'previous' | 'next') {
+    const track = trackRef.current
+    const firstCard = track?.querySelector<HTMLElement>('.project-card')
+
+    if (!track || !firstCard) {
+      return
+    }
+
+    const gap = Number.parseFloat(window.getComputedStyle(track).columnGap) || 0
+    const distance = firstCard.getBoundingClientRect().width + gap
+
+    track.scrollBy({ left: direction === 'next' ? distance : -distance, behavior: 'auto' })
+  }
+
+  return (
+    <section className="project-group" aria-labelledby={id + '-title'} data-reveal>
+      <div className="project-group-heading">
+        <div className="project-group-label">
+          <h3 className="project-group-title" id={id + '-title'}>{title}</h3>
+          <span className="project-group-count">{projects.length} {projects.length === 1 ? 'projeto' : 'projetos'}</span>
+        </div>
+        {hasOverflow && (
+          <div className="carousel-controls">
+            <button type="button" className="carousel-button" aria-label={'Mostrar projetos anteriores de ' + title}
+              aria-controls={trackId} disabled={!canScrollBack} onClick={() => scrollProjects('previous')}>
+              <span aria-hidden="true">←</span>
+            </button>
+            <button type="button" className="carousel-button" aria-label={'Mostrar próximos projetos de ' + title}
+              aria-controls={trackId} disabled={!canScrollForward} onClick={() => scrollProjects('next')}>
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="projects-track" id={trackId} ref={trackRef} role="group"
+        aria-label={'Projetos da categoria ' + title} tabIndex={hasOverflow ? 0 : undefined}>
+        {projects.map((project, index) => (
+          <article className={'project-card project-' + project.id} key={project.id}>
+            <button className="project-preview-button" onClick={() => onOpenProject(project)} aria-label={'Ampliar imagem do projeto ' + project.title}>
+              <div className="project-preview-frame">
+                <img src={project.image} alt={project.imageAlt} width="1672" height="941" loading="lazy" decoding="async" />
+              </div>
+              <span className="project-open"><Icon name="arrow" /></span>
+            </button>
+            <div className="project-info">
+              <div className="project-category"><span>{project.category}</span><span>/{String(index + 1).padStart(2, '0')}</span></div>
+              <a className="project-title" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={'Visitar o site de ' + project.title + ' (abre em nova aba)'}>{project.title}<Icon name="arrow" /></a>
+              <p className="project-description">{project.description}</p>
+              <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <a className="text-link project-visit" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={'Visitar o projeto ' + project.title + ' (abre em nova aba)'}>Visitar projeto <Icon name="arrow" /></a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const projectDialog = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      return
+    }
+
+    const revealElements = document.querySelectorAll<HTMLElement>('[data-reveal]')
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      }
+    }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' })
+
+    for (const element of revealElements) {
+      element.classList.add('reveal-ready')
+      observer.observe(element)
+    }
+
+    return () => {
+      observer.disconnect()
+
+      for (const element of revealElements) {
+        element.classList.remove('reveal-ready', 'is-visible')
+      }
+    }
+  }, [])
 
   function openProject(project: Project) {
     setSelectedProject(project)
@@ -129,8 +309,8 @@ function App() {
         <div className="container header-inner">
           <Brand />
           <nav id="main-navigation" aria-label="Menu principal" className={menuOpen ? 'navigation is-open' : 'navigation'}>
-            <a href="#servicos" onClick={() => setMenuOpen(false)}>O que fazemos</a>
             <a href="#projetos" onClick={() => setMenuOpen(false)}>Projetos</a>
+            <a href="#servicos" onClick={() => setMenuOpen(false)}>O que fazemos</a>
             <a href="#sobre" onClick={() => setMenuOpen(false)}>Sobre a Loog</a>
             <a href="#contato" className="mobile-contact" onClick={() => setMenuOpen(false)}>Vamos conversar <Icon name="arrow" /></a>
           </nav>
@@ -150,8 +330,8 @@ function App() {
               <h1>Grandes ideias.<br />Soluções reais.<br /><span>Do seu jeito.</span></h1>
               <p>Criamos sites e sistemas personalizados que conectam sua marca às pessoas e simplificam o seu negócio.</p>
               <div className="hero-actions">
-                <a href="#contato" className="button button-primary">Vamos tirar sua ideia do papel <Icon name="arrow" /></a>
-                <a href="#projetos" className="text-link">Explorar projetos <span>↓</span></a>
+                <a href="#projetos" className="button button-primary">Ver projetos <Icon name="arrow" /></a>
+                <a href="#contato" className="text-link">Falar com a Loog <Icon name="arrow" /></a>
               </div>
               <div className="hero-note"><span>↳</span><p>Tecnologia com propósito.<br /><strong>Do primeiro conceito ao último detalhe.</strong></p></div>
             </div>
@@ -159,10 +339,8 @@ function App() {
               <div className="art-orbit orbit-one" /><div className="art-orbit orbit-two" />
               <span className="art-cross cross-one">+</span><span className="art-cross cross-two">+</span>
               <div className="art-caption"><i /> PENSADO PARA O SEU PRÓXIMO PASSO</div>
-              <div className="hero-brand-sculpture"><BrandMark /></div>
-              <div className="hero-browser">
-                <div className="browser-top"><div><i /><i /><i /></div><span>seu-proximo-projeto.loog</span><span>+</span></div>
-                <DashboardPreview />
+              <div className="hero-portrait">
+                <img src={andersonPortrait} alt="Anderson, da Loog Software" width="1254" height="1254" fetchPriority="high" decoding="async" />
               </div>
               <div className="floating-label">
                 <span><Icon name="code" /></span><div>Uma boa ideia merece<br /><strong>uma solução bem feita.</strong></div><Icon name="arrow" />
@@ -173,30 +351,51 @@ function App() {
           <div className="container hero-bottom">
             <p>Seu negócio tem potencial.<br /><strong>A gente transforma em digital.</strong></p>
             <div><span>Sites que conectam</span><i /><span>Sistemas que simplificam</span><i /><span>Experiências que ficam</span></div>
-            <a href="#servicos" aria-label="Conhecer os serviços">↓</a>
+            <a href="#projetos" aria-label="Conhecer os projetos">↓</a>
+          </div>
+        </section>
+
+        <section id="projetos" className="projects-section">
+          <div className="container">
+            <div className="section-heading" data-reveal>
+              <div><span className="eyebrow section-label">01 / PROJETOS EM DESTAQUE</span><h2>Ideias que ganharam<br /><span>forma e função.</span></h2></div>
+              <a href="#contato" className="text-link">O próximo pode ser o seu <Icon name="arrow" /></a>
+            </div>
+            <div className="project-groups">
+              {projectGroups.map((group) => {
+                const groupProjects = projects.filter((project) => group.categories.includes(project.category))
+
+                if (groupProjects.length === 0) {
+                  return null
+                }
+
+                return <ProjectCarousel key={group.id} id={group.id} title={group.title}
+                  projects={groupProjects} onOpenProject={openProject} />
+              })}
+            </div>
           </div>
         </section>
 
         <section id="servicos" className="services-section">
           <div className="container">
-            <div className="section-heading">
-              <div><span className="eyebrow section-label">01 / O QUE FAZEMOS</span><h2>Seu desafio.<br /><span>Nossa próxima solução.</span></h2></div>
+            <div className="section-heading" data-reveal>
+              <div><span className="eyebrow section-label">02 / O QUE FAZEMOS</span><h2>Seu desafio.<br /><span>Nossa próxima solução.</span></h2></div>
               <p>Não existe um negócio igual ao seu.<br />A sua solução digital também não precisa ser.</p>
             </div>
             <div className="services-grid">
-              <article className="service">
+              <article className="service" data-reveal>
                 <span className="service-icon"><Icon name="window" /></span><span className="service-number">01</span>
                 <h3>Sites & landing pages</h3>
                 <p>Uma presença digital que traduz sua marca, apresenta seu trabalho e abre portas para novas oportunidades.</p>
                 <div className="service-footer"><span>SUA MARCA, BEM REPRESENTADA</span><Icon name="arrow" /></div>
               </article>
-              <article className="service">
+              <article className="service" data-reveal>
                 <span className="service-icon"><Icon name="code" /></span><span className="service-number">02</span>
                 <h3>Sistemas sob medida</h3>
                 <p>Ferramentas pensadas para a sua rotina. Organize processos e dê mais espaço para o seu negócio crescer.</p>
                 <div className="service-footer"><span>MAIS CONTROLE, MENOS COMPLICAÇÃO</span><Icon name="arrow" /></div>
               </article>
-              <article className="service">
+              <article className="service" data-reveal>
                 <span className="service-icon"><Icon name="phone" /></span><span className="service-number">03</span>
                 <h3>Cardápios digitais</h3>
                 <p>Seu cardápio na palma da mão. Uma forma prática e visual de apresentar seus produtos aos clientes.</p>
@@ -206,44 +405,16 @@ function App() {
           </div>
         </section>
 
-        <section id="projetos" className="projects-section">
-          <div className="container">
-            <div className="section-heading">
-              <div><span className="eyebrow section-label">02 / PROJETOS EM DESTAQUE</span><h2>Ideias que ganharam<br /><span>forma e função.</span></h2></div>
-              <a href="#contato" className="text-link">O próximo pode ser o seu <Icon name="arrow" /></a>
-            </div>
-            <div className="projects-grid">
-              {projects.map((project, index) => (
-                <article className={'project-card project-' + project.id} key={project.id}>
-                  <button className="project-preview-button" onClick={() => openProject(project)} aria-label={'Ampliar imagem do projeto ' + project.title}>
-                    <div className="project-preview-frame">
-                      <img src={project.image} alt={project.imageAlt} width="1672" height="941" loading="lazy" decoding="async" />
-                    </div>
-                    <span className="project-open"><Icon name="arrow" /></span>
-                  </button>
-                  <div className="project-info">
-                    <div className="project-category"><span>{project.category}</span><span>/0{index + 1}</span></div>
-                    <a className="project-title" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={'Visitar o site de ' + project.title + ' (abre em nova aba)'}>{project.title}<Icon name="arrow" /></a>
-                    <p className="project-description">{project.description}</p>
-                    <div className="project-tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                    <a className="text-link project-visit" href={project.url} target="_blank" rel="noopener noreferrer" aria-label={'Visitar o projeto ' + project.title + ' (abre em nova aba)'}>Visitar projeto <Icon name="arrow" /></a>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section id="sobre" className="about-section">
           <div className="container about-layout">
-            <div className="about-copy">
+            <div className="about-copy" data-reveal>
               <span className="eyebrow section-label">03 / MUITO PRAZER, SOMOS A LOOG</span>
               <h2>Gente que entende<br />de tecnologia.<br /><span>E escuta você.</span></h2>
               <p>Acreditamos que uma boa solução começa com uma boa conversa. Queremos entender o seu negócio para criar algo que faça sentido para você e para quem vai usar.</p>
               <p>Da primeira ideia à entrega, design e desenvolvimento caminham juntos. Com atenção aos detalhes e sem complicar o que pode ser simples.</p>
               <a href="#contato" className="text-link">Conheça quem vai construir com você <Icon name="arrow" /></a>
             </div>
-            <div className="process">
+            <div className="process" data-reveal>
               <div className="process-heading"><span>DO PRIMEIRO OLÁ À ENTREGA</span><span>↙</span></div>
               {steps.map((step) => (
                 <div className="process-step" key={step.number}><span>{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></div>
@@ -254,7 +425,7 @@ function App() {
         </section>
 
         <section id="contato" className="contact-section">
-          <div className="container contact-layout">
+          <div className="container contact-layout" data-reveal>
             <div>
               <span className="eyebrow"><span className="status-dot" /> O PRÓXIMO PASSO É UMA CONVERSA</span>
               <h2>Sua ideia merece<br /><span>sair do papel.</span><svg className="hand-arrow" viewBox="0 0 120 80" fill="none" aria-hidden="true"><path d="M5 8c8 40 45 60 100 39M86 30l25 14-11 27" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg></h2>
@@ -270,9 +441,9 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <div className="container footer-top">
+        <div className="container footer-top" data-reveal>
           <div><Brand /><p>Ideias em movimento. Soluções que conectam.</p></div>
-          <div className="footer-links"><a href="#servicos">Serviços</a><a href="#projetos">Projetos</a><a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram <Icon name="arrow" /></a></div>
+          <div className="footer-links"><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href={instagramUrl} target="_blank" rel="noopener noreferrer">Instagram <Icon name="arrow" /></a></div>
           <a href="#inicio" className="back-top">De volta ao topo ↑</a>
         </div>
         <div className="container footer-bottom"><span>© {new Date().getFullYear()} Loog Software. Todos os direitos reservados.</span><span>Feito com propósito<span className="footer-dot">.</span></span></div>
