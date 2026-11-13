@@ -415,7 +415,15 @@ function App() {
               <a href="#contato" className="text-link">Conheça quem vai construir com você <Icon name="arrow" /></a>
             </div>
             <div className="process" data-reveal>
-              <div className="process-heading"><span>DO PRIMEIRO OLÁ À ENTREGA</span><span>↙</span></div>
+              <div className="process-heading">
+                <span>DO PRIMEIRO OLÁ À ENTREGA</span>
+                <span aria-hidden="true">
+                  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 5 5 19M5 5v14h14" />
+                  </svg>
+                </span>
+              </div>
               {steps.map((step) => (
                 <div className="process-step" key={step.number}><span>{step.number}</span><div><h3>{step.title}</h3><p>{step.text}</p></div></div>
               ))}
