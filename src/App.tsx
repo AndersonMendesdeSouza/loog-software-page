@@ -66,9 +66,9 @@ const projects: Project[] = [
     category: 'SITE IMOBILIÁRIO',
     title: 'Imobiliária',
     image: imobiliariaPreview,
-    imageAlt: 'Site imobiliário de Buriti Alegre apresentado em um notebook e um celular.',
+    imageAlt: 'Site imobiliário apresentado em um notebook e um celular.',
     url: 'https://imobiliaria-im.vercel.app/',
-    description: 'Um site para apresentar imóveis em Buriti Alegre (GO) e facilitar o contato com o corretor.',
+    description: 'Um site para apresentar imóveis e facilitar o contato com o corretor.',
     tags: ['Catálogo de imóveis', 'Contato com corretor'],
   },
   {
@@ -112,13 +112,13 @@ const projects: Project[] = [
     tags: ['Catálogo de joias', 'Filtros por categoria'],
   },
   {
-    id: 'otica-visao',
+    id: 'otica',
     category: 'CATÁLOGO DIGITAL',
     title: 'Ótica Visão',
     image: oticaPreview,
-    imageAlt: 'Site da Ótica Visão apresentado em um notebook e um celular, com coleções de óculos em destaque.',
+    imageAlt: 'Site Ótica apresentado em um notebook e um celular, com coleções de óculos em destaque.',
     url: 'https://otica-page.vercel.app/',
-    description: 'Um site para apresentar coleções de óculos, detalhar modelos e facilitar o contato com a Ótica Visão em Buriti Alegre (GO).',
+    description: 'Um site para apresentar coleções de óculos, detalhar modelos e facilitar o contato com a Ótica.',
     tags: ['Catálogo de óculos', 'Contato com a loja'],
   },
   {
