@@ -113,7 +113,7 @@ const projects: Project[] = [
   },
   {
     id: 'otica',
-    category: 'CATÁLOGO DIGITAL',
+    category: 'SITE PROFISSIONAL',
     title: 'Ótica',
     image: oticaPreview,
     imageAlt: 'Site Ótica apresentado em um notebook e um celular, com coleções de óculos em destaque.',
