@@ -1536,10 +1536,13 @@ h2 > span {
   }
   .projects-track {
     --project-gap: 16px;
+    grid-auto-columns: 100%;
+    scroll-snap-type: x mandatory;
   }
   .project-card {
     padding: 10px;
     box-shadow: 0 6px 20px #0675ff14;
+    scroll-snap-stop: always;
   }
   .project-info {
     padding: 12px 2px 0;
