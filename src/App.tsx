@@ -114,7 +114,7 @@ const projects: Project[] = [
   {
     id: 'otica',
     category: 'CATÁLOGO DIGITAL',
-    title: 'Ótica Visão',
+    title: 'Ótica',
     image: oticaPreview,
     imageAlt: 'Site Ótica apresentado em um notebook e um celular, com coleções de óculos em destaque.',
     url: 'https://otica-page.vercel.app/',
