@@ -7,6 +7,8 @@ import joiasPreview from './assets/joias/image.png'
 import oticaPreview from './assets/otica/image.png'
 import odontoPreview from './assets/odonto/image.png'
 import essenciaPreview from './assets/essencia/image.png'
+import burguerPreview from './assets/amburgueria/image.png'
+import loogSystemPreview from './loogsystem/image.png'
 import './App.css'
 
 const instagramUrl = 'https://www.instagram.com/loog_software/'
@@ -61,6 +63,26 @@ type Project = {
 }
 
 const projects: Project[] = [
+  {
+    id: 'loog-system',
+    category: 'SISTEMA',
+    title: 'LoogSystem',
+    image: loogSystemPreview,
+    imageAlt: 'Identidade visual do LoogSystem, sistema de gerenciamento de negócios.',
+    url: 'https://admin.loogsystem.com.br/login',
+    description: 'Um sistema para gerenciar seu negócio, com acesso seguro ao painel administrativo.',
+    tags: ['Gestão de negócios', 'Painel administrativo'],
+  },
+  {
+    id: 'burguer',
+    category: 'SISTEMA',
+    title: 'Burguer',
+    image: burguerPreview,
+    imageAlt: 'Sistema da Burguer apresentado em um notebook e um celular, com cardápio e pedidos online.',
+    url: 'https://burguer-pedidos-un2i.vercel.app/main',
+    description: 'Um sistema para hamburgueria com cardápio digital e experiência prática para realizar pedidos online.',
+    tags: ['Cardápio e pedidos online', 'Experiência mobile'],
+  },
   {
     id: 'imobiliaria',
     category: 'SITE IMOBILIÁRIO',
@@ -144,6 +166,11 @@ const projects: Project[] = [
 ]
 
 const projectGroups = [
+  {
+    id: 'sistemas',
+    title: 'Sistemas',
+    categories: ['SISTEMA'],
+  },
   {
     id: 'sites-profissionais',
     title: 'Sites profissionais',
